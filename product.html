@@ -42,13 +42,7 @@
     <div class="row row-2">
         <h2>All Products</h2>
         <!-- call function when user selects sort by price -->
-        <select id="sorted" onchange="sortProducts(this.value)">
-            <option>Default Sorting</option>
-            <option value="lowtohigh">Sort by Price</option>
-            <option value="hightolow">Sort by Popularity</option>
-            <option value="discount">Sort by Rating</option>
-            <option value="discount">Sort by Sale</option>
-        </select>
+        <button id="sorted"  onclick="sortByPrice()">Sort by Price</button>
         <!-- <select id="sorted">
             <option>Default Sorting</option>
             <option>Sort by Price</option>
@@ -90,8 +84,6 @@
             </div>
             <p>Rs 2002 </p>
         </div>
-    
-    
         <div class="col-4">
             <img src="product-5.jpg">
             <h4>Grey Shoes</h4>
@@ -102,7 +94,7 @@
         </div>
         <div class="col-4">
             <img src="product-6.jpg">
-        <h4>Puma Black Tshirt</h4>
+            <h4>Puma Black Tshirt</h4>
             <div class="rating">
               
             </div>
@@ -124,8 +116,7 @@
             </div>
             <p>Rs 10000 </p>
         </div>
-    </div> 
-     <div class="row">
+    
         <div class="col-4">
             <img src="product-9.jpg">
             <h4>Roadster Watch</h4>
