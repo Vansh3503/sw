@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Style&Wrap</title>
     <link rel="stylesheet" href="style.css">
+    <!-- link javascript -->
+    <script src="product.js"></script>
    
 </head>
 <body>
@@ -39,15 +41,23 @@
 <div class="small-container">
     <div class="row row-2">
         <h2>All Products</h2>
-        <select>
+        <!-- call function when user selects sort by price -->
+        <select id="sorted" onchange="sortProducts(this.value)">
+            <option>Default Sorting</option>
+            <option value="lowtohigh">Sort by Price</option>
+            <option value="hightolow">Sort by Popularity</option>
+            <option value="discount">Sort by Rating</option>
+            <option value="discount">Sort by Sale</option>
+        </select>
+        <!-- <select id="sorted">
             <option>Default Sorting</option>
             <option>Sort by Price</option>
             <option>Sort by Popularity</option>
             <option>Sort by Rating</option>
             <option>Sort by Sale</option>
-        </select>
+        </select> -->
     </div>
-    <div class="row">
+    <div class="row" id="parentdiv">
         <div class="col-4">
             <img src="product-1.jpg">
             <h4>Red Printed T-shirt</h4>
@@ -199,5 +209,38 @@
         <p class="copyright">Copyright 2020 -Style&Wrap</p>
     </div>
 </div>
+<script>
+    // Get the select element
+    const select = document.querySelector("#sorted");
+  
+    // Add an event listener to the select element
+    select.addEventListener("change", function() {
+      // Get the selected option value
+      const selectedOption = this.value;
+  
+      // Check if the selected option is "Sort by Price"
+      if (selectedOption === "Sort by Price") {
+        // Get the parent container element
+        const parent = document.querySelector("#parentdiv");
+  
+        // Get all the child elements (products) in the parent container
+        const children = Array.from(parent.children);
+  
+        // Sort the children array by price
+        children.sort((a, b) => {
+          const priceA = parseInt(a.querySelector("p").textContent.replace("Rs ", ""));
+          const priceB = parseInt(b.querySelector("p").textContent.replace("Rs ", ""));
+          return priceA - priceB;
+        });
+  
+        // Remove all the child elements from the parent container
+        children.forEach(child => parent.removeChild(child));
+  
+        // Append the sorted children to the parent container
+        children.forEach(child => parent.appendChild(child));
+      }
+    });
+  </script>
+  
 </body>
 </html>
